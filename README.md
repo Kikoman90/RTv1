@@ -12,7 +12,7 @@ Several options are available (see [Shortcuts](https://github.com/Kikoman90/RTv1
 * Hide or show the HUD
 * Activate gloss
 
-The program can support multiple lights and objects in a scene. The scene and objects parameters can be modified in real-time. This software also uses multitheading to fasten up the calculations.
+The program can support multiple lights and objects in a scene. The scene and objects parameters can be modified in real-time. This software also uses multitheading to fasten up the calculations. All memory allocated during execution is freed.
 
 ## Install & launch
 ```bash
@@ -93,4 +93,4 @@ Once the scene is rendered, you are able to select objects in the scene by using
 </tbody>
 </table>
 ## Contact & contribute
-If you want to contact me, or fix/improve RTv1, just send me a mail at **fsidler@student.42.fr**
+If you want to contact me, or improve RTv1, just send me a mail at **fsidler@student.42.fr**
