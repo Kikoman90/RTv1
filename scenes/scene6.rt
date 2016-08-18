@@ -1,68 +1,68 @@
 scene
 {
-	cam_pos(0 20 -100)
-	cam_dir(0 0 1)
+	cam_pos(-280 100 -250)
+	cam_dir(0 0 3)
 }
 
 content
 {
 	object(light)
 	{
-		col(170 250 200)
-		pos(-10 30 30)
+		col(250 250 250)
+		pos(-40 60 -10)
+	}
+	object(light)
+	{
+		col(250 250 250)
+		pos(100 70 -10)
 	}
 	object(plane)
 	{
-		col(50 50 50)
-		pos(60 0 0)
-		rot(-1 0 0)
-	}
-	object(plane)
-	{
-		col(50 50 50)
-		pos(-50 0 0)
-		rot(1 0 0)
-	}
-	object(plane)
-	{
-		col(50 50 50)
-		pos(0 0 100)
+		col(130 130 130)
+		pos(0 0 140)
 		rot(0 0 -1)
 	}
 	object(plane)
 	{
-		col(50 50 50)
-		pos(0 0 -101)
-		rot(0 0 1)		
-	}
-	object(plane)
-	{
-		col(50 50 50)
-		pos(0 -11 0)
-		rot(0 1 0)
-	}
-	object(plane)
-	{
-		col(50 50 50)
-		pos(0 50 0)
-		rot(0 -1 0)
+		col(130 200 240)
+		pos(0 0 -300)
+		rot(0 0 1)
 	}
 	object(sphere)
 	{
-		col(200 0 100)
-		pos(0 0 50)
+		col(0 250 250)
+		pos(-12 25 5)
+		size(25)
+	}
+	object(sphere)
+	{
+		col(190 140 250)
+		pos(8 -53 -44)
+		size(35)
+	}
+	object(sphere)
+	{
+		col(200 10 100)
+		pos(-109 -74 84)
 		size(10)
 	}
 	object(sphere)
 	{
-		col(0 0 200)
-		pos(10 17 60)
-		size(10)
+		col(200 10 200)
+		pos(-118 -166 35)
+		size(20)
 	}
 	object(sphere)
 	{
-		col(0 200 0)
-		pos(20 0 50)
+		col(180 250 150)
+		pos(-40 134 101)
+		size(25)
+	}
+	object(cylinder)
+	{
+		col(10 150 240)
+		pos(-30 0 40)
+		rot(1 1 0)
 		size(10)
 	}
 }
