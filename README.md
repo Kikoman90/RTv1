@@ -7,9 +7,12 @@ Several options are available (see [Shortcuts](https://github.com/Kikoman90/RTv1
 * Translate and rotate the camera
 * Translate and rotate the selected object
 * Increase the radius/angle of the selected object
+* Increase the maximum number of reflections
+* Activate reflections on planes only
+* Hide or show the HUD
 * Activate gloss
 
-The program can support multiple lights and objects in a scene.
+The program can support multiple lights and objects in a scene. The scene and objects parameters can be modified in real-time. This software also uses multitheading to fasten up the calculations.
 
 ## Install & launch
 ```bash
@@ -68,12 +71,24 @@ Once the scene is rendered, you are able to select objects in the scene by using
 <td valign="top" align="center"><kbd><center>&nbsp;page&nbsp;<br /> up</center></kbd> <kbd><center>&nbsp;page&nbsp;<br /> down</center></kbd></td>
 </tr>
 <tr>
-<td valign="top" height="30px">activate/deactivate gloss (specularity)</td>
+<td valign="top" height="30px">Activate/deactivate gloss (specularity)</td>
 <td valign="top" align="center"><kbd>&nbsp;G&nbsp;</kbd></td>
 </tr>
 <tr>
 <td valign="top" height="30px">Increase/decrease size/angle of the selected object</td>
 <td valign="top" align="center"><kbd>&nbsp;+&nbsp;</kbd> <kbd>&nbsp;-&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Increase/decrease the maximum number of reflections</td>
+<td valign="top" align="center"><kbd>&nbsp;R&nbsp;</kbd> <kbd>&nbsp;F&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Activate/deactivate reflections on planes only</td>
+<td valign="top" align="center"><kbd>&nbsp;E&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Hide/show HUD</td>
+<td valign="top" align="center"><kbd>&nbsp;tab&nbsp;</kbd></td>
 </tr>
 </tbody>
 </table>
