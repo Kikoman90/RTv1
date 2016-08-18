@@ -6,7 +6,7 @@
 #    By: fsidler <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/09 13:47:47 by fsidler           #+#    #+#              #
-#    Updated: 2016/08/17 17:26:38 by fsidler          ###   ########.fr        #
+#    Updated: 2016/08/18 18:16:35 by fsidler          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = RTv1
 CC = clang
 LIB_NAME = ft
 LIBDIR = libft
-FLAGS = -Wall -Wextra -Werror -g3
+FLAGS = -Wall -Wextra -Werror
 
 HEADERS = includes
 
