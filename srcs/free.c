@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 14:08:15 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/18 17:05:52 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 18:18:59 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_copy(t_mlx *mlx, t_th *th)
 	th->bpp = mlx->bpp;
 	th->size_line = mlx->size_line;
 	th->d = mlx->d;
+	th->aa = mlx->aa;
 }
 
 int		ft_free_lists(t_obj *lgt, t_obj *obj)

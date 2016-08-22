@@ -6,7 +6,7 @@
 #    By: fsidler <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 11:09:55 by fsidler           #+#    #+#              #
-#    Updated: 2016/07/28 11:20:27 by fsidler          ###   ########.fr        #
+#    Updated: 2016/08/22 19:15:55 by fsidler          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC = ft_isascii.c \
 	  ft_toupper.c \
 	  ft_atoi.c \
 	  ft_bzero.c \
+	  ft_fzero.c \
 	  ft_memccpy.c \
 	  ft_memcpy.c \
 	  ft_memchr.c \

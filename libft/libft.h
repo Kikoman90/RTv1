@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 13:21:24 by fsidler           #+#    #+#             */
-/*   Updated: 2016/07/28 11:20:41 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 19:15:41 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ char				*ft_strnstr(const char *total, const char *find, size_t n);
 
 size_t				ft_strlcat(char *dest, const char *src, size_t n);
 size_t				ft_strlen(const char *str);
+
+void				ft_fzero(float *s, int n);
 
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);

@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:48:36 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/18 17:06:11 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 19:34:40 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,7 @@ static int		init_mlx(t_mlx *mlx, char *s)
 		return (ft_free_arg(mlx, buf, 0));
 	if ((mlx->scene = ft_getscene(buf, mlx->nbl, 0)) == NULL)
 		return (ft_free_arg(mlx, NULL, 1));
-	mlx->obj = NULL;
-	mlx->light = NULL;
-	mlx->hud = 1;
-	mlx->spec = 0;
-	mlx->maxref = 0;
-	mlx->pref = 0;
-	mlx->selection = 0;
+	ft_init_mlx_var(mlx);
 	if (ft_parser(mlx) == -1)
 		return (ft_free_arg(mlx, NULL, 2));
 	return (0);

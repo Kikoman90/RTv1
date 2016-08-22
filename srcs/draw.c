@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 16:20:03 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/18 16:08:49 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 19:27:27 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		ft_put_pixel(t_th *mlx, int x, int y, int color)
 	}
 }
 
-static void	ft_set_ray(t_th *mlx, double u, int x, int y)
+static void	ft_set_ray(t_th *mlx, double u, double x, double y)
 {
 	double	v;
 
@@ -44,31 +44,40 @@ static void	ft_set_ray(t_th *mlx, double u, int x, int y)
 	mlx->cpt = 0;
 }
 
-static int	ft_raytrace(t_th *mlx, t_obj *node, int x, int y)
+static int	ft_raytrace(t_th *mlx, t_obj *node, double x, double y)
 {
-	t_obj	*tmp;
 	t_obj	*light;
+	t_obj	*tmp;
 	float	*tab;
-	double	u;
+	float	res[3];
+	double	p;
 
+	light = mlx->light;
 	if (!(tab = (float *)malloc(sizeof(float) * 4)))
 		return (-1);
-	u = 0.0;
-	tmp = NULL;
-	light = mlx->light;
-	ft_set_ray(mlx, u, x, y);
-	if ((tmp = ft_intersection(mlx, node, mlx->ray_dir, mlx->cam_pos)) != NULL)
+	ft_fzero(res, 3);
+	p = 1.;
+	while (y < mlx->t_y + 1)
 	{
-		tab[0] = 0;
-		tab[1] = 0;
-		tab[2] = 0;
-		tab = ft_lambert(mlx, tmp, light, tab);
-		tab[0] = ft_clamp(tab[0], 0.0, 1.0);
-		tab[1] = ft_clamp(tab[1], 0.0, 1.0);
-		tab[2] = ft_clamp(tab[2], 0.0, 1.0);
-		ft_put_pixel(mlx, x, y, (((int)(tab[0] * 255) & 0xff) << 16) +
-			(((int)(tab[1] * 255) & 0xff) << 8) + ((int)(tab[2] * 255) & 0xff));
+		x = mlx->t_x;
+		while (x < mlx->t_x + 1)
+		{
+			ft_set_ray(mlx, 0.0, x, y);
+			if ((tmp = ft_intersection(mlx, node, mlx->ray_dir, mlx->cam_pos)) != NULL)
+			{
+				ft_fzero(tab, 4);
+				tab = ft_lambert(mlx, tmp, light, tab);
+				res[0] += ft_clamp(tab[0], 0.0, 1.0);
+				res[1] += ft_clamp(tab[1], 0.0, 1.0);
+				res[2] += ft_clamp(tab[2], 0.0, 1.0);
+			}
+			p++;
+			x = x + (1.0 / mlx->aa);
+		}
+		y = y + (1.0 / mlx->aa);
 	}
+	ft_put_pixel(mlx, mlx->t_x, mlx->t_y, (((int)((res[0] / p) * 255) & 0xff) << 16) +
+		(((int)((res[1] / p) * 255) & 0xff) << 8) + ((int)((res[2] / p) * 255) & 0xff));
 	free(tab);
 	return (0);
 }
@@ -78,19 +87,23 @@ void		*my_thread_process(void *arg)
 	t_tab_th	*tab;
 	t_th		*th;
 	t_obj		*node;
-	int			x;
-	int			y;
+	double		x;
+	double		y;
 
 	tab = (t_tab_th *)arg;
 	node = tab->mlx->obj;
 	th = (t_th *)malloc(sizeof(t_th));
 	ft_copy(tab->mlx, th);
-	y = 0;
+	y = 0.0;
 	while (y < WIN_H)
 	{
 		x = WIN_W * tab->i / NB_THREAD;
 		while (x < WIN_W * (tab->i + 1) / NB_THREAD)
+		{
+			th->t_y = (int)y;
+			th->t_x = (int)x;
 			ft_raytrace(th, node, x++, y);
+		}
 		y++;
 	}
 	ft_free_lists(th->light, th->obj);

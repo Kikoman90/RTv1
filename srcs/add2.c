@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 17:19:46 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/18 17:58:26 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 19:44:38 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,27 @@ int		ft_pref_key(int keycode, t_mlx *mlx)
 	(keycode == 3 && mlx->maxref > 0) ? mlx->maxref-- : mlx->maxref;
 	if (keycode == 14)
 		mlx->pref = (mlx->pref == 0) ? 1 : 0;
+	if (keycode == 7)
+	{
+		if (mlx->aa == 1 || mlx->aa == 2 || mlx->aa == 4 || mlx->aa == 8)
+			mlx->aa *= 2;
+	}
+	if (keycode == 6)
+	{
+		if (mlx->aa == 2 || mlx->aa == 4 || mlx->aa == 8 || mlx->aa == 16)
+			mlx->aa /= 2;
+	}
 	return (0);
+}
+
+void	ft_init_mlx_var(t_mlx *mlx)
+{
+	mlx->obj = NULL;
+	mlx->light = NULL;
+	mlx->hud = 1;
+	mlx->spec = 0;
+	mlx->maxref = 0;
+	mlx->pref = 0;
+	mlx->selection = 0;
+	mlx->aa = 1;
 }

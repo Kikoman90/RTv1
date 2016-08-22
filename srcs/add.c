@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 16:34:18 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/17 16:14:27 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 19:40:31 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,25 @@
 
 void		ft_hud(t_mlx *mlx)
 {
-	char	*s;
+	char	*s1;
+	char	*s2;
 
 	if (mlx->hud == 1)
 	{
-		s = ft_strjoin("number of reflections: ", ft_itoa(mlx->maxref), 'R');
-		MSP(mlx->mlx, mlx->win, 50, 750, 0x00FEDC, s);
-		free(s);
+		if (mlx->aa == 1)
+		{
+			s1 = NULL;
+			MSP(mlx->mlx, mlx->win, 50, 735, 0x00FEDC, "anti-aliasing: off");
+		}
+		else
+		{
+			s1 = ft_strjoin("anti-aliasing: x", ft_itoa(mlx->aa), 'R');
+			MSP(mlx->mlx, mlx->win, 50, 735, 0x00FEDC, s1);
+			free(s1);
+		}
+		s2 = ft_strjoin("number of reflections: ", ft_itoa(mlx->maxref), 'R');
+		MSP(mlx->mlx, mlx->win, 50, 750, 0x00FEDC, s2);
+		free(s2);
 		if (mlx->spec == 1)
 			MSP(mlx->mlx, mlx->win, 50, 765, 0x00FEDC, "specularity: on");
 		else
@@ -39,8 +51,9 @@ void		ft_instructions(void)
 	ft_putendl("+/-(num): move camera/object along local z axis");
 	ft_putendl("+/-: increase/decrease size/angle for objects");
 	ft_putendl("G: activate/deactivate gloss");
-	ft_putendl("R/F: increase/decrease the number of reflections");
+	ft_putendl("X/Z: increase/decrease anti-aliasing");
 	ft_putendl("E: activate/deactivate reflection on planes only");
+	ft_putendl("X/Z: increase/decrease anti-aliasing");
 	ft_putendl("TAB: hide/show hud");
 	ft_putendl("ESC: exit");
 }

@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:55:36 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/18 17:59:29 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 19:34:15 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct		s_mlx
 	int				selection;
 	int				maxref;
 	int				pref;
+	int				aa;
 	char			*d;
 	char			*pos;
 	char			*rot;
@@ -120,6 +121,9 @@ typedef struct		s_th
 	int				maxref;
 	int				pref;
 	int				cpt;
+	int				t_y;
+	int				t_x;
+	int				aa;
 	char			*d;
 	t_vec			i;
 	t_vec			j;
@@ -162,6 +166,7 @@ int					ft_add_cyl_cone(t_mlx *mlx, int *k, int t, int i);
 void				ft_hud(t_mlx *mlx);
 void				ft_instructions(void);
 void				ft_string_put(t_mlx *mlx);
+void				ft_init_mlx_var(t_mlx *mlx);
 void				ft_copy(t_mlx *mlx, t_th *th);
 void				ft_put_pixel(t_th *mlx, int x, int y, int color);
 
