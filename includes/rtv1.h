@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:55:36 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/22 19:34:15 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/22 19:51:54 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,8 @@ typedef struct		s_th
 	int				maxref;
 	int				pref;
 	int				cpt;
-	int				t_y;
-	int				t_x;
+	int				ty;
+	int				tx;
 	int				aa;
 	char			*d;
 	t_vec			i;
