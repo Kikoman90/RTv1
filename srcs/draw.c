@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 16:20:03 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/22 21:05:30 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/24 16:43:43 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int		ft_raytrace(t_th *mlx, t_obj *node, double x, double y)
 	if (!(tab = (float *)malloc(sizeof(float) * 4)))
 		return (-1);
 	ft_fzero(r, 3);
-	p = 1.;
+	p = 0.;
 	while (y < mlx->ty + 1)
 	{
 		x = mlx->tx;
