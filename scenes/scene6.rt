@@ -1,7 +1,7 @@
 scene
 {
-	cam_pos(-280 100 -250)
-	cam_dir(0 0 3)
+	cam_pos(0 0 -250)
+	cam_dir(0 0 1)
 }
 
 content
@@ -19,13 +19,13 @@ content
 	object(plane)
 	{
 		col(130 130 130)
-		pos(0 0 140)
+		pos(0 0 200)
 		rot(0 0 -1)
 	}
 	object(plane)
 	{
 		col(130 200 240)
-		pos(0 0 -300)
+		pos(0 0 -700)
 		rot(0 0 1)
 	}
 	object(sphere)
