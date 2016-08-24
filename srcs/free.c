@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 14:08:15 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/22 18:18:59 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/24 17:21:58 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,12 @@ int		ft_free_arg(t_mlx *mlx, char *buf, int r)
 		ft_free_lists(mlx->light, mlx->obj);
 	}
 	return (-1);
+}
+
+float	*ft_average(float *r, float *tab)
+{
+	r[0] += ft_clamp(tab[0], 0.0, 1.0);
+	r[1] += ft_clamp(tab[1], 0.0, 1.0);
+	r[2] += ft_clamp(tab[2], 0.0, 1.0);
+	return (r);
 }

@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/04 15:55:36 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/22 19:51:54 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/24 17:22:25 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ t_obj				*ft_add_object_link(t_mlx *mlx, t_obj *link);
 t_obj				*ft_intersection(t_th *mlx, t_obj *node, t_vec ray,
 		t_vec pos);
 
+float				*ft_average(float *r, float *tab);
 float				*ft_endlight(t_obj *tmp, t_obj *light, float *tab,
 		float d);
 float				*ft_lambert(t_th *mlx, t_obj *tmp, t_obj *light,

@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 16:20:03 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/24 16:43:43 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/24 17:25:51 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,15 @@ static int		ft_raytrace(t_th *mlx, t_obj *node, double x, double y)
 	if (!(tab = (float *)malloc(sizeof(float) * 4)))
 		return (-1);
 	ft_fzero(r, 3);
-	p = 0.;
-	while (y < mlx->ty + 1)
+	p = 0.0;
+	while (y < mlx->ty + 1 && (x = mlx->tx) > -1)
 	{
-		x = mlx->tx;
 		while (x < mlx->tx + 1 && (p += 1) > 0)
 		{
 			ft_set_ray(mlx, tab, x, y);
 			if ((tmp = ft_intersection(mlx, node, mlx->ray_dir, mlx->cam_pos)))
-			{
 				tab = ft_lambert(mlx, tmp, mlx->light, tab);
-				r[0] += ft_clamp(tab[0], 0.0, 1.0);
-				r[1] += ft_clamp(tab[1], 0.0, 1.0);
-				r[2] += ft_clamp(tab[2], 0.0, 1.0);
-			}
+			ft_average(r, tab);
 			x = x + (1.0 / mlx->aa);
 		}
 		y = y + (1.0 / mlx->aa);
