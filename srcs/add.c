@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 16:34:18 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/22 19:40:31 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/08/24 17:34:31 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void		ft_instructions(void)
 	ft_putendl("+/-: increase/decrease size/angle for objects");
 	ft_putendl("G: activate/deactivate gloss");
 	ft_putendl("X/Z: increase/decrease anti-aliasing");
+	ft_putendl("R/F: increase/decrease number of reflections");
 	ft_putendl("E: activate/deactivate reflection on planes only");
-	ft_putendl("X/Z: increase/decrease anti-aliasing");
 	ft_putendl("TAB: hide/show hud");
 	ft_putendl("ESC: exit");
 }
