@@ -9,10 +9,11 @@ Several options are available (see [Shortcuts](https://github.com/Kikoman90/RTv1
 * Increase the radius/angle of the selected object
 * Increase the maximum number of reflections
 * Activate reflections on planes only
+* Increase the anti-aliasing
 * Hide or show the HUD
 * Activate gloss
 
-The program can support multiple lights and objects in a scene. The scene and objects parameters can be modified in real-time. This software also uses multitheading to fasten up the calculations. All memory allocated during execution is freed.
+The program can support multiple lights and objects in a scene. The scene and objects parameters can be modified in real-time. This software also uses multitheading to fasten up the calculations (special thanks to jfortin42). All memory allocated during execution is freed.
 
 ## Install & launch
 ```bash
@@ -81,6 +82,10 @@ Once the scene is rendered, you are able to select objects in the scene by using
 <tr>
 <td valign="top" height="30px">Increase/decrease the maximum number of reflections</td>
 <td valign="top" align="center"><kbd>&nbsp;R&nbsp;</kbd> <kbd>&nbsp;F&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Increase/decrease the anti-aliasing (1 by default)</td>
+<td valign="top" align="center"><kbd>&nbsp;X&nbsp;</kbd> <kbd>&nbsp;Z&nbsp;</kbd></td>
 </tr>
 <tr>
 <td valign="top" height="30px">Activate/deactivate reflections on planes only</td>
