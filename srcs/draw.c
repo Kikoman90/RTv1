@@ -12,8 +12,6 @@
 
 #include "rtv1.h"
 
-#include <stdio.h>
-
 float			*ft_get_color_pixel(t_mlx *mlx, int x, int y, float* tab)
 {
 	int		i;
@@ -61,10 +59,7 @@ void			ft_draw_average_color(t_mlx *mlx)
 
 void			ft_put_pixel(t_th *mlx, int x, int y, int color)
 {
-	int	*tmp;
-
-	tmp = (int *)&mlx->d[(y * mlx->size_line) + (x * (mlx->bpp / 8))];
-	*tmp = color;
+	*((int *)&mlx->d[(y * mlx->size_line) + (x * (mlx->bpp / 8))]) = color;
 }
 
 static float	*ft_set_ray(t_th *mlx, float *tab, double x, double y)
