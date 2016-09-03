@@ -55,6 +55,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIBDIR)
+	@make clean -C $(LIBMLX)
 
 re: fclean $(NAME)
 
