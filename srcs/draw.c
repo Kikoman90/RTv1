@@ -12,19 +12,59 @@
 
 #include "rtv1.h"
 
+#include <stdio.h>
+
+float			*ft_get_color_pixel(t_mlx *mlx, int x, int y, float* tab)
+{
+	int		i;
+
+	i = -1;
+	while (++i < 3)
+		tab[i] = (unsigned char)(mlx->d[(y * mlx->size_line) +
+		 (x * (mlx->bpp / 8)) + i]) / 255.;
+	return (tab);
+}
+
+void			ft_draw_average_color(t_mlx *mlx)
+{
+	float	r[3];
+	float	*tab;
+	double	p;
+	int		x;
+	int		y;
+
+	if (!(tab = (float *)malloc(sizeof(float) * 3)))
+		return ;
+	y = -1;
+	while (++y < WIN_H)
+	{
+		x = (y % 2 == 0 ? 1 : 0);
+		while (x < WIN_W)
+		{
+			p = 0.0;
+			ft_fzero(r, 3);
+			if (x > 0 && ++p > 0)
+				ft_average(r, ft_get_color_pixel(mlx, x - 1, y, tab));
+			if (x < WIN_W - 1 && ++p > 0)
+				ft_average(r, ft_get_color_pixel(mlx, x + 1, y, tab));
+			if (y > 0 && ++p > 0)
+				ft_average(r, ft_get_color_pixel(mlx, x, y - 1, tab));
+			if (y < WIN_H - 1 && ++p > 0)
+				ft_average(r, ft_get_color_pixel(mlx, x, y + 1, tab));
+		ft_put_pixel((t_th *)mlx, x, y, (((int)(r[2] / p * 255) & 0xff) << 16) +
+		(((int)(r[1] / p * 255) & 0xff) << 8) + ((int)(r[0] / p * 255) & 0xff));
+			x += 2;
+		}
+	}
+	free(tab);
+}
+
 void			ft_put_pixel(t_th *mlx, int x, int y, int color)
 {
-	int				i;
-	unsigned int	p;
+	int	*tmp;
 
-	i = 0;
-	p = x * (mlx->bpp / 8) + y * (mlx->size_line);
-	while (i < (mlx->bpp / 8))
-	{
-		mlx->d[p + i] = color;
-		color >>= 8;
-		i++;
-	}
+	tmp = (int *)&mlx->d[(y * mlx->size_line) + (x * (mlx->bpp / 8))];
+	*tmp = color;
 }
 
 static float	*ft_set_ray(t_th *mlx, float *tab, double x, double y)
@@ -54,7 +94,7 @@ static int		ft_raytrace(t_th *mlx, t_obj *node, double x, double y)
 	float	r[3];
 	double	p;
 
-	if (!(tab = (float *)malloc(sizeof(float) * 4)))
+	if (!(tab = (float *)malloc(sizeof(float) * 3)))
 		return (-1);
 	ft_fzero(r, 3);
 	p = 0.0;
@@ -88,17 +128,18 @@ void			*my_thread_process(void *arg)
 	node = tab->mlx->obj;
 	th = (t_th *)malloc(sizeof(t_th));
 	ft_copy(tab->mlx, th);
-	y = 0.0;
-	while (y < WIN_H)
+	y = -1.0;
+	while (++y < WIN_H)
 	{
-		x = WIN_W * tab->i / NB_THREAD;
+		x = tab->i * WIN_W / NB_THREAD;
+		if ((int)y % 2)
+			++x;
 		while (x < WIN_W * (tab->i + 1) / NB_THREAD)
 		{
 			th->ty = (int)y;
 			th->tx = (int)x;
-			ft_raytrace(th, node, x++, y);
+			ft_raytrace(th, node, x += 2, y);
 		}
-		y++;
 	}
 	ft_free_lists(th->light, th->obj);
 	free(th);
@@ -125,6 +166,7 @@ int				ft_draw(t_mlx *mlx)
 	i = -1;
 	while (++i < NB_THREAD)
 		(void)pthread_join(th[i], &ret);
+	ft_draw_average_color(mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	ft_hud(mlx);
 	return (0);

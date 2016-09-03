@@ -14,6 +14,7 @@ NAME = RTv1
 CC = clang
 LIB_NAME = ft
 LIBDIR = libft
+LIBMLX = mlx
 FLAGS = -Wall -Wextra -Werror
 
 HEADERS = includes
@@ -32,12 +33,15 @@ SOURCES = srcs/add.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
-$(NAME): $(LIBDIR)/lib$(LIB_NAME).a $(OBJECTS)
-	@$(CC) $(FLAGS) -L $(LIBDIR) -l $(LIB_NAME) -o $@ $^ -lmlx -framework OpenGL -framework AppKit -lpthread
+$(NAME): $(LIBDIR)/lib$(LIB_NAME).a $(LIBMLX)/lib$(LIBMLX).a $(OBJECTS)
+	@$(CC) $(FLAGS) -L $(LIBDIR) -l $(LIB_NAME) -L $(LIBMLX) -l $(LIBMLX) -o $@ $^ -framework OpenGL -framework AppKit -lpthread
 	@echo "compiling [ $(NAME) ] SUCCESS"
 
 $(LIBDIR)/lib$(LIB_NAME).a : 
 	@$(MAKE) -C $(LIBDIR)
+
+$(LIBMLX)/lib$(LIBMLX).a : 
+	@$(MAKE) -C $(LIBMLX)
 
 all: $(NAME)
 
