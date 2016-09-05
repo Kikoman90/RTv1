@@ -111,7 +111,7 @@ static int		ft_raytrace(t_th *mlx, t_obj *node, double x, double y)
 	return (0);
 }
 
-void			*my_thread_process(void *arg)
+static void		*my_thread_process(void *arg)
 {
 	t_tab_th	*tab;
 	t_th		*th;
