@@ -13,7 +13,7 @@ Several options are available (see [Shortcuts](https://github.com/Kikoman90/RTv1
 * Hide or show the HUD
 * Activate gloss
 
-The program can support multiple lights and objects in a scene. The scene and objects parameters can be modified in real-time. This software also uses multitheading to fasten up the calculations (special thanks to <a href="https://github.com/jfortin42">jfortin42</a>. All memory allocated during execution is freed.
+The program can support multiple lights and objects in a scene. The scene and objects parameters can be modified in real-time. This software also uses multitheading to fasten up the calculations (special thanks to <a href="https://github.com/jfortin42">jfortin42</a>). All memory allocated during execution is freed.
 
 ## Install & launch
 ```bash
