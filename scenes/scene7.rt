@@ -14,7 +14,7 @@ content
 	object(light)
 	{
 		col(100 100 100)
-		pos(70 10 80)
+		pos(70 10 81)
 	}
 	object(plane)
 	{
