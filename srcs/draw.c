@@ -12,51 +12,6 @@
 
 #include "rtv1.h"
 
-float			*ft_get_color_pixel(t_mlx *mlx, int x, int y, float* tab)
-{
-	int		i;
-
-	i = -1;
-	while (++i < 3)
-		tab[i] = (unsigned char)(mlx->d[(y * mlx->size_line) +
-		 (x * (mlx->bpp / 8)) + i]) / 255.;
-	return (tab);
-}
-
-void			ft_draw_average_color(t_mlx *mlx)
-{
-	float	r[3];
-	float	*tab;
-	double	p;
-	int		x;
-	int		y;
-
-	if (!(tab = (float *)malloc(sizeof(float) * 3)))
-		return ;
-	y = -1;
-	while (++y < WIN_H)
-	{
-		x = (y % 2 == 0 ? 1 : 0);
-		while (x < WIN_W)
-		{
-			p = 0.0;
-			ft_fzero(r, 3);
-			if (x > 0 && ++p > 0)
-				ft_average(r, ft_get_color_pixel(mlx, x - 1, y, tab));
-			if (x < WIN_W - 1 && ++p > 0)
-				ft_average(r, ft_get_color_pixel(mlx, x + 1, y, tab));
-			if (y > 0 && ++p > 0)
-				ft_average(r, ft_get_color_pixel(mlx, x, y - 1, tab));
-			if (y < WIN_H - 1 && ++p > 0)
-				ft_average(r, ft_get_color_pixel(mlx, x, y + 1, tab));
-		ft_put_pixel((t_th *)mlx, x, y, (((int)(r[2] / p * 255) & 0xff) << 16) +
-		(((int)(r[1] / p * 255) & 0xff) << 8) + ((int)(r[0] / p * 255) & 0xff));
-			x += 2;
-		}
-	}
-	free(tab);
-}
-
 void			ft_put_pixel(t_th *mlx, int x, int y, int color)
 {
 	*((int *)&mlx->d[(y * mlx->size_line) + (x * (mlx->bpp / 8))]) = color;

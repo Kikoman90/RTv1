@@ -169,6 +169,7 @@ void				ft_string_put(t_mlx *mlx);
 void				ft_init_mlx_var(t_mlx *mlx);
 void				ft_copy(t_mlx *mlx, t_th *th);
 void				ft_put_pixel(t_th *mlx, int x, int y, int color);
+void				ft_draw_average_color(t_mlx *mlx);
 
 double				ft_inter_cone(t_th *mlx, t_obj *node, t_vec ray,
 		t_vec pos);
