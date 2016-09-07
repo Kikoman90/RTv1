@@ -8,65 +8,65 @@ content
 {
 	object(light)
 	{
-		col(170 250 200)
-		pos(-10 30 30)
+		col(100 100 100)
+		pos(-20 10 30)
 	}
 	object(light)
 	{
-		col(150 12 240)
-		pos(50 30 30)
+		col(100 100 100)
+		pos(70 10 80)
 	}
 	object(plane)
 	{
-		col(50 50 50)
+		col(100 100 100)
 		pos(60 0 0)
 		rot(-1 0 0)
 	}
 	object(plane)
 	{
-		col(50 50 50)
+		col(100 100 100)
 		pos(-50 0 0)
 		rot(1 0 0)
 	}
 	object(plane)
 	{
-		col(50 50 50)
+		col(100 100 100)
 		pos(0 0 100)
 		rot(0 0 -1)
 	}
 	object(plane)
 	{
-		col(50 50 50)
+		col(100 100 100)
 		pos(0 0 -101)
 		rot(0 0 1)		
 	}
 	object(plane)
 	{
-		col(50 50 50)
+		col(100 100 100)
 		pos(0 -11 0)
 		rot(0 1 0)
 	}
 	object(plane)
 	{
-		col(50 50 50)
+		col(100 100 100)
 		pos(0 50 0)
 		rot(0 -1 0)
 	}
 	object(sphere)
 	{
-		col(200 0 100)
+		col(240 100 170)
 		pos(0 0 50)
 		size(10)
 	}
 	object(sphere)
 	{
-		col(0 0 200)
+		col(100 100 250)
 		pos(10 17 60)
 		size(10)
 	}
 	object(sphere)
 	{
-		col(0 200 0)
+		col(100 250 100)
 		pos(20 0 50)
 		size(10)
 	}

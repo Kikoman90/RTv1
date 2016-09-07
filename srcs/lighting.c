@@ -6,7 +6,7 @@
 /*   By: fsidler <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 15:48:31 by fsidler           #+#    #+#             */
-/*   Updated: 2016/08/22 18:36:56 by fsidler          ###   ########.fr       */
+/*   Updated: 2016/09/07 17:25:44 by fsidler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static t_obj	*ft_ref_inter(t_th *mlx, t_obj *node, t_obj *tmp, t_vec pos)
 	return (tmp2);
 }
 
-static t_obj	*ft_ref_init(t_th *mlx, t_obj *tmp, t_vec pos)
+static t_obj	*ft_ref_init(t_th *mlx, t_obj *tmp, t_vec *pos)
 {
 	t_obj	*tmp2;
 
@@ -79,16 +79,17 @@ static t_obj	*ft_ref_init(t_th *mlx, t_obj *tmp, t_vec pos)
 		(2 * ft_vectordot(&mlx->refpos, &mlx->norm)));
 	mlx->ref = ft_vectorsub(&mlx->refpos, &mlx->ref);
 	ft_vectornorm(&mlx->ref);
-	tmp2 = ft_ref_inter(mlx, mlx->obj, tmp, pos);
+	tmp2 = ft_ref_inter(mlx, mlx->obj, tmp, *pos);
 	if (!tmp2)
 		return (NULL);
-	mlx->refpos = (t_vec){pos.x + mlx->t * mlx->ref.x, pos.y +
-		mlx->t * mlx->ref.y, pos.z + mlx->t * mlx->ref.z};
-	mlx->norm = ft_norm(mlx, tmp2, mlx->refpos);
+	*pos = (t_vec){pos->x + mlx->t * mlx->ref.x, pos->y +
+		mlx->t * mlx->ref.y, pos->z + mlx->t * mlx->ref.z};
+	mlx->refpos = (t_vec){mlx->ref.x, mlx->ref.y, mlx->ref.z};
+	mlx->norm = ft_norm(mlx, tmp2, *pos);
 	return (tmp2);
 }
 
-static float	*ft_reflect(t_th *mlx, t_obj *tmp, t_vec pos, float *tab)
+static float	*ft_reflect(t_th *mlx, t_obj *tmp, t_vec *pos, float *tab)
 {
 	t_obj	*tmp2;
 	t_obj	*light;
@@ -101,11 +102,11 @@ static float	*ft_reflect(t_th *mlx, t_obj *tmp, t_vec pos, float *tab)
 		return (tab);
 	while (light != NULL)
 	{
-		LAMBERT = 0.15;
-		dist = ft_vectorsub(&light->pos, &mlx->refpos);
+		LAMBERT = 0.14;
+		dist = ft_vectorsub(&light->pos, pos);
 		d = ft_clamp(1.0 / sqrtf(sqrtf(ft_vectordot(&dist, &dist))), 0.0, 1.0);
 		ft_vectornorm(&dist);
-		if (ft_shadow(mlx, tmp2, light, mlx->refpos) == 0)
+		if (ft_shadow(mlx, tmp2, light, *pos) == 0)
 			LAMBERT += ft_clamp(ft_vectordot(&dist, &mlx->norm), 0.0, 1.0);
 		tab = ft_endlight(tmp2, light, tab, d);
 		tab[0] += (COND1) ? ft_spec(mlx, dist, d, tab[3]) : 0.0;
@@ -113,7 +114,7 @@ static float	*ft_reflect(t_th *mlx, t_obj *tmp, t_vec pos, float *tab)
 		tab[2] += (COND1) ? ft_spec(mlx, dist, d, tab[3]) : 0.0;
 		light = light->next;
 	}
-	return ((PREF1) ? tab : ft_reflect(mlx, tmp2, mlx->refpos, tab));
+	return ((PREF1) ? tab : ft_reflect(mlx, tmp2, pos, tab));
 }
 
 float			*ft_lambert(t_th *mlx, t_obj *tmp, t_obj *light, float *tab)
@@ -140,5 +141,5 @@ float			*ft_lambert(t_th *mlx, t_obj *tmp, t_obj *light, float *tab)
 		light = light->next;
 	}
 	mlx->refpos = (t_vec){mlx->ray_dir.x, mlx->ray_dir.y, mlx->ray_dir.z};
-	return ((PREF2) ? tab : ft_reflect(mlx, tmp, pos, tab));
+	return ((PREF2) ? tab : ft_reflect(mlx, tmp, &pos, tab));
 }
