@@ -1,7 +1,7 @@
 # RTv1
 
 RTv1 is a program developped for my learning course at 42 school for the exploration of raytracing.
-<img align="center" src="http://image.noelshack.com/fichiers/2016/41/1476279816-screen-shot-2016-10-12-at-3-43-12-pm.png" width="100%" />
+<img align="center" src="http://image.noelshack.com/fichiers/2016/41/1476280225-screen-shot-2016-10-12-at-3-50-07-pm.png" width="100%" />
 Several options are available (see [Shortcuts](https://github.com/Kikoman90/RTv1#shortcuts) section for more info)
 * Select objects within the scene
 * Translate and rotate the camera
