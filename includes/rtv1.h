@@ -13,8 +13,8 @@
 #ifndef RTV1_H
 # define RTV1_H
 
-# include <../libft/libft.h>
-# include <mlx.h>
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include <errno.h>
 # include <pthread.h>
 
@@ -70,16 +70,16 @@ typedef struct		s_obj
 
 typedef struct		s_mlx
 {
-	int				nbl;
 	int				bpp;
 	int				size_line;
+	char			*d;
+	int				nbl;
 	int				endian;
 	int				hud;
 	int				selection;
 	int				maxref;
 	int				pref;
 	int				aa;
-	char			*d;
 	char			*pos;
 	char			*rot;
 	char			**scene;
@@ -118,13 +118,13 @@ typedef struct		s_th
 {
 	int				bpp;
 	int				size_line;
+	char			*d;
 	int				maxref;
 	int				pref;
 	int				cpt;
 	int				ty;
 	int				tx;
 	int				aa;
-	char			*d;
 	t_vec			i;
 	t_vec			j;
 	t_vec			k;
@@ -169,6 +169,7 @@ void				ft_string_put(t_mlx *mlx);
 void				ft_init_mlx_var(t_mlx *mlx);
 void				ft_copy(t_mlx *mlx, t_th *th);
 void				ft_put_pixel(t_th *mlx, int x, int y, int color);
+void				ft_draw_average_color(t_mlx *mlx);
 
 double				ft_inter_cone(t_th *mlx, t_obj *node, t_vec ray,
 		t_vec pos);
